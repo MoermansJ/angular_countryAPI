@@ -1,0 +1,12 @@
+<div>
+	<form (submit)="false">
+		<label for="input-country">Country:</label>
+		<input id="input-country" placeholder="enter country" [(ngModel)]="country" name="country" required />
+		<button (click)="handleButtonClick()">Click</button>
+	</form>
+
+	<div>
+		<p>{{countryData?.region}}</p>
+	</div>
+	<app-display [countryData]="countryData"></app-display>
+</div>
