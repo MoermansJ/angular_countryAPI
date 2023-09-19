@@ -5,8 +5,8 @@
 		<button (click)="handleButtonClick()">Click</button>
 	</form>
 
-	<div>
-		<p>{{countryData?.region}}</p>
+	<div *ngFor="let country of countryDataArr">
+		<app-display [countryData]="country"></app-display>
 	</div>
-	<app-display [countryData]="countryData"></app-display>
+
 </div>

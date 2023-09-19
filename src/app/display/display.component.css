@@ -1,0 +1,9 @@
+.card-country {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-country > img {
+  width: 40px;
+}

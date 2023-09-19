@@ -1,32 +1,32 @@
-import { Component, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import CountryData from '../service/CountryData';
+import { DisplayComponent } from '../display/display.component';
+import CountryService from '../service/country-service.ts.service';
 
 @Component({
   selector: 'app-inputform',
   templateUrl: './inputform.component.html',
   styleUrls: ['./inputform.component.css'],
 })
-@Injectable({
-  providedIn: 'root', // Angular provides a single instance for the entire application
-})
 export class InputformComponent {
   //variables
   country = ''; //from <input>
-  countryData?: CountryData;
+  countryDataArr?: CountryData[];
 
   //constructor
-  constructor(private httpClient: HttpClient) {}
+  constructor(private countryService: CountryService) {}
 
   //event handlers
   handleButtonClick(): void {
     //on <button>
-    this.httpClient
-      .get<CountryData[]>(`https://restcountries.com/v3.1/name/${this.country}`)
-      .subscribe((response: CountryData[]) => {
+    this.countryService.getCountry(this.country).subscribe({
+      next: (response: CountryData[]) => {
+        this.countryDataArr = response;
         console.log(response);
-        this.countryData = response[0];
-      });
+      },
+
+      error: (errorResponse: any) => console.log(errorResponse),
+    });
 
     //fetch
     // fetch(`https://restcountries.com/v3.1/name/${this.country}`)

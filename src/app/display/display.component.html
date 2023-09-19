@@ -1,3 +1,8 @@
-<div>
-	<p>{{countryData?.fifa}}</p>
+<div class="card-country">
+	<img [src]="countryData?.flags?.png" alt="countryData.flags.alt" />
+	<p>{{countryData?.altSpellings}}/p>
+	<p><b>names:</b> {{countryData?.altSpellings}}</p>
+	<p><b>capital:</b> {{countryData?.capital}}</p>
+	<p><b>bordering countries:</b> {{countryData?.borders}}</p>
+	<p><b>region:</b> {{countryData?.region}}</p>
 </div>
